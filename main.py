@@ -49,8 +49,8 @@ while (cap.isOpened()):
                 idx = int(y_pred['classes'].numpy()[0, i])
                 if class_ids[idx] == class_ids[14]:
                     cow_box = y_pred['boxes'].numpy()[0, i, :]
-                    (startX, startY, W, H) = cow_box.astype("int")
-                    (startX, startY, endX, endY) = (startX, startY, startX + W, startY + H)
+                    (startX, startY, w, h) = cow_box.astype("int")
+                    (startX, startY, endX, endY) = (startX, startY, startX + w, startY + h)
                     cv2.rectangle(image, (startX, startY), (endX, endY), (0, 255, 0), 5)
         cv2.imshow('Demo',image)
         if cv2.waitKey(1) & 0xFF == ord('s'):
