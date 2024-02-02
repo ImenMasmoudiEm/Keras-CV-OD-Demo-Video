@@ -12,6 +12,7 @@
 import keras_cv
 import numpy as np
 import cv2
+import tensorflow as tf
 
 pretrained_model = keras_cv.models.RetinaNet.from_preset("retinanet_resnet50_pascalvoc", bounding_box_format="xywh")
 
@@ -40,7 +41,8 @@ while (cap.isOpened()):
     ret, image = cap.read()
     if ret:
         image = np.array(image)
-        image = image[0:640, 0:640, :]
+        image = tf.image.resize(image, target_shape, method='nearest')
+        image = np.array(image)
         image_batch = np.resize(image,(1, 640, 640, 3))
         y_pred = pretrained_model.predict(image_batch)
         for i in np.arange(0, y_pred['num_detections'][0]):
