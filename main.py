@@ -14,7 +14,8 @@ import numpy as np
 import cv2
 import tensorflow as tf
 
-pretrained_model = keras_cv.models.RetinaNet.from_preset("retinanet_resnet50_pascalvoc", bounding_box_format="xywh")
+#pretrained_model = keras_cv.models.RetinaNet.from_preset("retinanet_resnet50_pascalvoc", bounding_box_format="xywh")
+pretrained_model = keras_cv.models.YOLOV8Detector.from_preset("yolo_v8_m_pascalvoc", bounding_box_format="xywh")
 
 class_ids = ["Aeroplane", "Bicycle", "Bird", "Boat", "Bottle", "Bus", "Car", "Cat", "Chair", "Cow", "Dining Table", "Dog", "Horse", "Motorbike", "Person", "Potted Plant", "Sheep", "Sofa", "Train", "Tvmonitor", "Total"]
 #                 0           1        2       3        4        5      6      7       8       9           10         11      12         13          14           15          16      17       18        19          20
